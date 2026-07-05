@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Script from "next/script";
 import { useEffect, useState, type ReactNode } from "react";
 
 const calendlyHref = "#apply"; // TODO: Replace CTA links with Calendly booking link.
@@ -784,18 +785,10 @@ function PricingCard({ program }: { program: Program }) {
 }
 
 function LeadForm({ copy }: { copy: Copy["form"] }) {
-  const [submitted, setSubmitted] = useState(false);
-  const countryCodes = ["+46 Sweden", "+47 Norway", "+45 Denmark", "+358 Finland", "+44 UK", "+1 USA/Canada", "+49 Germany", "+31 Netherlands", "Other"];
-
   return (
-    <form
+    <div
       className="rounded-[8px] border border-white/10 bg-[#09111d]/90 p-5 shadow-2xl shadow-black/30 sm:p-8"
-      onSubmit={(event) => {
-        event.preventDefault();
-        setSubmitted(true);
-      }}
     >
-      {/* TODO: Connect lead form to Google Forms, Typeform, Calendly, CRM, or backend. */}
       <div className="mb-6">
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#39ff9f]">
           {copy.eyebrow}
@@ -803,73 +796,18 @@ function LeadForm({ copy }: { copy: Copy["form"] }) {
         <h3 className="mt-2 text-2xl font-semibold text-white">{copy.title}</h3>
         <p className="mt-3 text-sm leading-7 text-[#9aa8bd]">{copy.text}</p>
       </div>
-      <div className="grid gap-4">
-        <label className="grid gap-2 text-sm font-medium text-white">
-          {copy.name}
-          <input
-            className="min-h-12 rounded-[8px] border border-white/10 bg-white/[0.06] px-4 text-white outline-none transition placeholder:text-[#68768a] focus:border-[#39ff9f]"
-            name="name"
-            placeholder={copy.namePlaceholder}
-            required
-            type="text"
-          />
-        </label>
-        <label className="grid gap-2 text-sm font-medium text-white">
-          {copy.email}
-          <input
-            className="min-h-12 rounded-[8px] border border-white/10 bg-white/[0.06] px-4 text-white outline-none transition placeholder:text-[#68768a] focus:border-[#39ff9f]"
-            name="email"
-            placeholder={copy.emailPlaceholder}
-            required
-            type="email"
-          />
-        </label>
-        <label className="grid gap-2 text-sm font-medium text-white">
-          {copy.phone}
-          <div className="grid gap-3 sm:grid-cols-[0.9fr_1.2fr]">
-            <select
-              aria-label={copy.country}
-              className="min-h-12 rounded-[8px] border border-white/10 bg-white/[0.06] px-4 text-white outline-none transition focus:border-[#39ff9f]"
-              defaultValue="+46 Sweden"
-              name="countryCode"
-            >
-              {countryCodes.map((code) => (
-                <option className="bg-[#09111d] text-white" key={code} value={code}>
-                  {code}
-                </option>
-              ))}
-            </select>
-            <input
-              className="min-h-12 rounded-[8px] border border-white/10 bg-white/[0.06] px-4 text-white outline-none transition placeholder:text-[#68768a] focus:border-[#39ff9f]"
-              inputMode="tel"
-              name="phone"
-              placeholder={copy.phonePlaceholder}
-              type="tel"
-            />
-          </div>
-        </label>
-        <label className="grid gap-2 text-sm font-medium text-white">
-          {copy.goal}
-          <textarea
-            className="min-h-32 resize-none rounded-[8px] border border-white/10 bg-white/[0.06] px-4 py-3 text-white outline-none transition placeholder:text-[#68768a] focus:border-[#39ff9f]"
-            name="goal"
-            placeholder={copy.goalPlaceholder}
-            required
-          />
-        </label>
-      </div>
-      {submitted && (
-        <p className="mt-5 rounded-[8px] border border-[#39ff9f]/30 bg-[#39ff9f]/10 px-4 py-3 text-sm font-medium leading-6 text-[#c9ffe5]">
-          {copy.success}
-        </p>
-      )}
-      <button
-        className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#39ff9f] px-6 py-3 text-sm font-bold text-[#04100b] transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-[#39ff9f] focus:ring-offset-2 focus:ring-offset-[#05070d] sm:text-base"
-        type="submit"
-      >
-        {copy.submit}
-      </button>
-    </form>
+      <div
+        className="min-h-[520px] overflow-hidden rounded-[8px] border border-white/10 bg-white/[0.03]"
+        id="closingdealz-social-reset-form"
+      />
+      <Script
+        async
+        data-target="closingdealz-social-reset-form"
+        id="closingdealz-social-reset-form-script"
+        src="https://app.closingdealz.io/forms/ed7b1780-ef1f-4beb-8d8a-8961c642b1c9.js"
+        strategy="afterInteractive"
+      />
+    </div>
   );
 }
 
