@@ -789,12 +789,10 @@ function LeadForm({ copy }: { copy: Copy["form"] }) {
     <div
       className="rounded-[8px] border border-white/10 bg-[#09111d]/90 p-5 shadow-2xl shadow-black/30 sm:p-8"
     >
-      <div className="mb-6">
+      <div className="mb-6 pl-6">
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#39ff9f]">
           {copy.eyebrow}
         </p>
-        <h3 className="mt-2 text-2xl font-semibold text-white">{copy.title}</h3>
-        <p className="mt-3 text-sm leading-7 text-[#9aa8bd]">{copy.text}</p>
       </div>
       <div
         className="min-h-[520px] overflow-hidden rounded-[8px] border border-white/10 bg-white/[0.03]"
