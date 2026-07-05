@@ -9,6 +9,7 @@ Social Reset is a bilingual Swedish and English landing page for a premium onlin
 ## Important URLs
 
 - Homepage: https://social-reset.netlify.app/
+- Subscriptions: https://social-reset.netlify.app/subscriptions
 - Sitemap: https://social-reset.netlify.app/sitemap.xml
 
 ## Positioning

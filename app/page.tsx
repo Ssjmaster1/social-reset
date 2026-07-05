@@ -11,6 +11,7 @@ const translations = {
     nav: {
       program: "Program",
       community: "Community",
+      subscriptions: "Subscriptions",
       bookCall: "Book a call",
       contact: "Contact",
       topCta: "Book a free call",
@@ -224,6 +225,8 @@ const translations = {
       email: "Email",
       emailPlaceholder: "name@email.com",
       phone: "Phone number",
+      country: "Country code",
+      phonePlaceholder: "+1, +44, +46...",
       goal: "What do you want to improve most?",
       goalPlaceholder: "Social confidence, fitness, discipline, first impressions...",
       submit: "Send application",
@@ -266,6 +269,7 @@ const translations = {
     nav: {
       program: "Program",
       community: "Community",
+      subscriptions: "Prenumerationer",
       bookCall: "Boka samtal",
       contact: "Kontakt",
       topCta: "Boka gratis samtal",
@@ -479,6 +483,8 @@ const translations = {
       email: "Email",
       emailPlaceholder: "namn@email.com",
       phone: "Telefonnummer",
+      country: "Landskod",
+      phonePlaceholder: "+1, +44, +46...",
       goal: "Vad vill du förbättra mest?",
       goalPlaceholder: "Socialt självförtroende, fitness, disciplin, första intryck...",
       submit: "Skicka ansökan",
@@ -779,6 +785,7 @@ function PricingCard({ program }: { program: Program }) {
 
 function LeadForm({ copy }: { copy: Copy["form"] }) {
   const [submitted, setSubmitted] = useState(false);
+  const countryCodes = ["+46 Sweden", "+47 Norway", "+45 Denmark", "+358 Finland", "+44 UK", "+1 USA/Canada", "+49 Germany", "+31 Netherlands", "Other"];
 
   return (
     <form
@@ -819,12 +826,27 @@ function LeadForm({ copy }: { copy: Copy["form"] }) {
         </label>
         <label className="grid gap-2 text-sm font-medium text-white">
           {copy.phone}
-          <input
-            className="min-h-12 rounded-[8px] border border-white/10 bg-white/[0.06] px-4 text-white outline-none transition placeholder:text-[#68768a] focus:border-[#39ff9f]"
-            name="phone"
-            placeholder="+46 ..."
-            type="tel"
-          />
+          <div className="grid gap-3 sm:grid-cols-[0.9fr_1.2fr]">
+            <select
+              aria-label={copy.country}
+              className="min-h-12 rounded-[8px] border border-white/10 bg-white/[0.06] px-4 text-white outline-none transition focus:border-[#39ff9f]"
+              defaultValue="+46 Sweden"
+              name="countryCode"
+            >
+              {countryCodes.map((code) => (
+                <option className="bg-[#09111d] text-white" key={code} value={code}>
+                  {code}
+                </option>
+              ))}
+            </select>
+            <input
+              className="min-h-12 rounded-[8px] border border-white/10 bg-white/[0.06] px-4 text-white outline-none transition placeholder:text-[#68768a] focus:border-[#39ff9f]"
+              inputMode="tel"
+              name="phone"
+              placeholder={copy.phonePlaceholder}
+              type="tel"
+            />
+          </div>
         </label>
         <label className="grid gap-2 text-sm font-medium text-white">
           {copy.goal}
@@ -872,6 +894,7 @@ export default function Home() {
   const navLinks = [
     { href: "#program", label: copy.nav.program },
     { href: "#community", label: copy.nav.community },
+    { href: "/subscriptions", label: copy.nav.subscriptions },
     { href: "#apply", label: copy.nav.bookCall },
     { href: "#contact", label: copy.nav.contact },
   ];
@@ -1130,6 +1153,9 @@ export default function Home() {
             </a>
             <a className="hover:text-white" href="#community">
               {copy.nav.community}
+            </a>
+            <a className="hover:text-white" href="/subscriptions">
+              {copy.nav.subscriptions}
             </a>
             <a className="hover:text-white" href="#apply">
               {copy.nav.bookCall}
