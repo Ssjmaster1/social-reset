@@ -24,6 +24,17 @@ const copy = {
       title: "Choose your level",
       text: "No exaggerated promises. No passive chat group. Just structure, progress reporting, and a community where members keep each other moving.",
     },
+    proof: {
+      eyebrow: "What you pay for",
+      title: "Not access to a chat. Access to a rhythm.",
+      text: "The membership is designed to make progress visible every week. You report actions, get direction, and stay close to people who are also doing the work.",
+      cards: [
+        ["Weekly proof of action", "Social reps, gym sessions, career moves, and discipline wins get reported instead of staying vague."],
+        ["Real accountability", "You are expected to show what happened, what slipped, and what you will correct next."],
+        ["No trophy wall", "Screenshots and wins are used as evidence of growth, not as a way to flex attention."],
+        ["Life-wide progress", "The focus is not only dating. It is confidence, fitness, career, friendships, and self-respect."],
+      ],
+    },
     plans: [
       {
         name: "Member",
@@ -95,6 +106,17 @@ const copy = {
     intro: {
       title: "Välj din nivå",
       text: "Inga överdrivna löften. Ingen passiv chattgrupp. Bara struktur, rapportering och ett community där medlemmar håller varandra i rörelse.",
+    },
+    proof: {
+      eyebrow: "Vad du betalar för",
+      title: "Inte tillgång till en chatt. Tillgång till en rytm.",
+      text: "Medlemskapet är byggt för att göra framsteg synliga varje vecka. Du rapporterar actions, får riktning och håller dig nära personer som också gör jobbet.",
+      cards: [
+        ["Veckovis bevis på action", "Sociala reps, gympass, karriärsteg och disciplin-wins rapporteras istället för att vara vaga."],
+        ["Riktig accountability", "Du förväntas visa vad som hände, vad som tappades och vad du ska korrigera härnäst."],
+        ["Ingen trophy wall", "Screenshots och wins används som bevis på utveckling, inte för att flexa uppmärksamhet."],
+        ["Utveckling i hela livet", "Fokus är inte bara dating. Det är confidence, fitness, karriär, vänskap och självrespekt."],
+      ],
     },
     plans: [
       {
@@ -214,6 +236,32 @@ function CheckList({ items }: { items: readonly string[] }) {
   );
 }
 
+function ProofSection({ proof }: { proof: (typeof copy)[Language]["proof"] }) {
+  return (
+    <section className="px-5 py-16 sm:px-6 lg:px-8 lg:py-20">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-10 max-w-3xl">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#39ff9f]">
+            {proof.eyebrow}
+          </p>
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-5xl">
+            {proof.title}
+          </h2>
+          <p className="mt-5 text-base leading-8 text-[#9aa8bd] sm:text-lg">{proof.text}</p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {proof.cards.map(([title, text]) => (
+            <article className="rounded-[8px] border border-white/10 bg-white/[0.045] p-6" key={title}>
+              <h3 className="text-lg font-semibold text-white">{title}</h3>
+              <p className="mt-3 text-sm leading-7 text-[#9aa8bd]">{text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function SubscriptionsPage() {
   const [language, setLanguage] = useState<Language>("en");
   const t = copy[language];
@@ -281,6 +329,8 @@ export default function SubscriptionsPage() {
           </div>
         </div>
       </section>
+
+      <ProofSection proof={t.proof} />
 
       <section className="px-5 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-2">
