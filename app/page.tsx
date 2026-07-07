@@ -65,6 +65,34 @@ const translations = {
         "You build confidence from repeated evidence",
       ],
     },
+    proofStack: {
+      eyebrow: "Proof without cringe",
+      title: "The proof is not attention. The proof is action.",
+      text: "Social Reset is built around the reps that actually change someone: starting conversations, showing up to events, reporting progress, training consistently, and correcting faster.",
+      cards: [
+        [
+          "Built from real reps",
+          "The method comes from repeated social practice, documented lessons, and feedback loops instead of theory alone.",
+        ],
+        [
+          "Context over screenshots",
+          "When proof is shown, it should show volume, progression, dates, and the work behind the result, with private details blurred.",
+        ],
+        [
+          "Member wins matter most",
+          "A first real approach, a social event attended, or a week of honest reporting is stronger proof than flashy attention.",
+        ],
+        [
+          "Respectful confidence",
+          "No manipulation, no objectifying language, and no trophy wall. The focus is social competence, self-respect, and action.",
+        ],
+      ],
+      metrics: [
+        ["Tracked reps", "Social actions logged and reviewed"],
+        ["Feedback loops", "Clear correction instead of guessing"],
+        ["Weekly momentum", "Check-ins that keep members moving"],
+      ],
+    },
     solution: {
       eyebrow: "The solution",
       title: "That is why we created Social Reset",
@@ -90,6 +118,20 @@ const translations = {
         ["Day 5", "Take one bigger social action and report the result."],
       ],
       note: "The missions scale with your level. You are not expected to be fearless on day one.",
+    },
+    wins: {
+      eyebrow: "Real Social Reset Wins",
+      title: "The scoreboard is ordinary action repeated.",
+      text: "The best proof is not that the coach can get attention. The best proof is that normal members start doing things they avoided before.",
+      cards: [
+        ["First approaches", "Starting conversations in real life instead of waiting for the perfect moment."],
+        ["First dates", "Turning confidence work into calmer, more natural interactions."],
+        ["Social events", "Showing up, staying present, and building experience around people."],
+        ["New connections", "Making friends, joining groups, and becoming more socially active."],
+        ["Fitness consistency", "Training, eating better, and carrying yourself with more self-respect."],
+        ["Career actions", "Taking initiative, speaking up, and building discipline outside dating."],
+      ],
+      note: "Verified screenshots, testimonials, and member wins can be added here as they come in.",
     },
     method: {
       eyebrow: "The method",
@@ -323,6 +365,34 @@ const translations = {
         "Du bygger självförtroende genom faktisk erfarenhet",
       ],
     },
+    proofStack: {
+      eyebrow: "Bevis utan cringe",
+      title: "Beviset är inte uppmärksamhet. Beviset är action.",
+      text: "Social Reset är byggt runt repsen som faktiskt förändrar någon: starta samtal, dyka upp på event, rapportera framsteg, träna konsekvent och korrigera snabbare.",
+      cards: [
+        [
+          "Byggt från riktiga reps",
+          "Metoden kommer från upprepad social träning, dokumenterade lärdomar och feedback-loopar istället för bara teori.",
+        ],
+        [
+          "Kontext före screenshots",
+          "När proof visas ska det visa volym, progression, datum och arbetet bakom resultatet, med privata detaljer blurade.",
+        ],
+        [
+          "Medlemmars wins väger tyngst",
+          "En första approach, ett socialt event eller en vecka av ärlig rapportering är starkare proof än flashy uppmärksamhet.",
+        ],
+        [
+          "Respektfull confidence",
+          "Ingen manipulation, inget objektifierande språk och ingen trophy wall. Fokus är social kompetens, självrespekt och action.",
+        ],
+      ],
+      metrics: [
+        ["Trackade reps", "Sociala actions som loggas och följs upp"],
+        ["Feedback-loopar", "Tydlig korrigering istället för att gissa"],
+        ["Veckovis momentum", "Check-ins som håller medlemmar i rörelse"],
+      ],
+    },
     solution: {
       eyebrow: "Lösningen",
       title: "Därför skapade vi Social Reset",
@@ -348,6 +418,20 @@ const translations = {
         ["Dag 5", "Ta en större social action och rapportera resultatet."],
       ],
       note: "Uppdragen skalas efter din nivå. Du förväntas inte vara orädd dag ett.",
+    },
+    wins: {
+      eyebrow: "Real Social Reset Wins",
+      title: "Scoreboarden är vanlig action som upprepas.",
+      text: "Det starkaste beviset är inte att coachen kan få uppmärksamhet. Det starkaste beviset är att vanliga medlemmar börjar göra saker de tidigare undvek.",
+      cards: [
+        ["Första approaches", "Starta samtal i verkligheten istället för att vänta på perfekt läge."],
+        ["Första dates", "Göra confidence-arbetet till lugnare och mer naturliga interaktioner."],
+        ["Sociala event", "Dyka upp, vara närvarande och bygga erfarenhet runt människor."],
+        ["Nya kontakter", "Skaffa vänner, gå med i grupper och bli mer socialt aktiv."],
+        ["Fitness consistency", "Träna, äta bättre och bära dig själv med mer självrespekt."],
+        ["Karriär-actions", "Ta initiativ, prata tydligare och bygga disciplin utanför dating."],
+      ],
+      note: "Verifierade screenshots, testimonials och medlemswins kan läggas till här när de finns.",
     },
     method: {
       eyebrow: "Metoden",
@@ -702,6 +786,33 @@ function ContrastSection({ copy }: { copy: Copy["contrast"] }) {
   );
 }
 
+function ProofStack({ copy }: { copy: Copy["proofStack"] }) {
+  return (
+    <Section eyebrow={copy.eyebrow} title={copy.title} text={copy.text}>
+      <div className="grid gap-5 lg:grid-cols-[1fr_0.9fr] lg:items-start">
+        <div className="grid gap-4 sm:grid-cols-2">
+          {copy.cards.map(([title, text]) => (
+            <article className="rounded-[8px] border border-white/10 bg-white/[0.045] p-6" key={title}>
+              <h3 className="text-xl font-semibold text-white">{title}</h3>
+              <p className="mt-3 text-sm leading-7 text-[#9aa8bd]">{text}</p>
+            </article>
+          ))}
+        </div>
+        <aside className="rounded-[8px] border border-[#39ff9f]/30 bg-[#39ff9f]/[0.055] p-6 shadow-[0_0_70px_rgba(57,255,159,0.1)] sm:p-8">
+          <div className="grid gap-4">
+            {copy.metrics.map(([title, text]) => (
+              <div className="rounded-[8px] border border-[#39ff9f]/20 bg-[#39ff9f]/10 p-5" key={title}>
+                <p className="text-2xl font-semibold text-white">{title}</p>
+                <p className="mt-2 text-sm leading-6 text-[#c9ffe5]">{text}</p>
+              </div>
+            ))}
+          </div>
+        </aside>
+      </div>
+    </Section>
+  );
+}
+
 function MissionPreview({ copy }: { copy: Copy["missionPreview"] }) {
   return (
     <Section eyebrow={copy.eyebrow} title={copy.title} text={copy.text}>
@@ -728,6 +839,26 @@ function MissionPreview({ copy }: { copy: Copy["missionPreview"] }) {
           {copy.note}
         </p>
       </div>
+    </Section>
+  );
+}
+
+function WinsSection({ copy }: { copy: Copy["wins"] }) {
+  return (
+    <Section eyebrow={copy.eyebrow} title={copy.title} text={copy.text}>
+      {/* TODO: Add verified blurred screenshots and real testimonials when available. */}
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {copy.cards.map(([title, text]) => (
+          <article className="rounded-[8px] border border-white/10 bg-[#09111d] p-6" key={title}>
+            <div className="mb-5 h-10 w-10 rounded-[8px] border border-[#39ff9f]/30 bg-[#39ff9f]/10" />
+            <h3 className="text-xl font-semibold text-white">{title}</h3>
+            <p className="mt-3 text-sm leading-7 text-[#9aa8bd]">{text}</p>
+          </article>
+        ))}
+      </div>
+      <p className="mt-5 rounded-[8px] border border-white/10 bg-white/[0.035] px-4 py-3 text-sm leading-6 text-[#9aa8bd]">
+        {copy.note}
+      </p>
     </Section>
   );
 }
@@ -963,6 +1094,8 @@ export default function Home() {
 
       <ContrastSection copy={copy.contrast} />
 
+      <ProofStack copy={copy.proofStack} />
+
       <Section eyebrow={copy.solution.eyebrow} title={copy.solution.title} text={copy.solution.text}>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {copy.solution.cards.map(([title, text]) => (
@@ -989,6 +1122,8 @@ export default function Home() {
       </Section>
 
       <MissionPreview copy={copy.missionPreview} />
+
+      <WinsSection copy={copy.wins} />
 
       <Section id="program" eyebrow={copy.programs.eyebrow} title={copy.programs.title}>
         <div className="grid gap-5 lg:grid-cols-2">
